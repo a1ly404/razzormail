@@ -149,8 +149,13 @@
         </div>
         
         <div class="footer">
-            <p>&copy; 2024 razzormail. All rights reserved.</p>
+            <p>&copy; <span id="currentYear">2024</span> razzormail. All rights reserved.</p>
         </div>
     </div>
+    
+    <script>
+        // Auto-update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
