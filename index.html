@@ -984,7 +984,7 @@
         <div class="team-grid">
             <div class="team-member reveal">
                 <div class="team-photo">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80" alt="Marcus Chen - CEO">
+                    <img src="https://i.pravatar.cc/400?img=11" alt="Marcus Chen - CEO" onerror="this.src='https://via.placeholder.com/400/9333ea/ffffff?text=Marcus+Chen'">
                 </div>
                 <h3>Marcus Chen</h3>
                 <div class="team-role">Chief Executive Officer</div>
@@ -993,7 +993,7 @@
             
             <div class="team-member reveal">
                 <div class="team-photo">
-                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&auto=format&fit=crop&q=80" alt="Aisha Johnson - CTO">
+                    <img src="https://i.pravatar.cc/400?img=5" alt="Aisha Johnson - CTO" onerror="this.src='https://via.placeholder.com/400/9333ea/ffffff?text=Aisha+Johnson'">
                 </div>
                 <h3>Aisha Johnson</h3>
                 <div class="team-role">Chief Technology Officer</div>
@@ -1002,7 +1002,7 @@
             
             <div class="team-member reveal">
                 <div class="team-photo">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80" alt="David Park - Head of Security">
+                    <img src="https://i.pravatar.cc/400?img=13" alt="David Park - Head of Security" onerror="this.src='https://via.placeholder.com/400/9333ea/ffffff?text=David+Park'">
                 </div>
                 <h3>David Park</h3>
                 <div class="team-role">Head of Security</div>
@@ -1011,7 +1011,7 @@
             
             <div class="team-member reveal">
                 <div class="team-photo">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&auto=format&fit=crop&q=80" alt="Sofia Rodriguez - VP Product">
+                    <img src="https://i.pravatar.cc/400?img=9" alt="Sofia Rodriguez - VP Product" onerror="this.src='https://via.placeholder.com/400/9333ea/ffffff?text=Sofia+Rodriguez'">
                 </div>
                 <h3>Sofia Rodriguez</h3>
                 <div class="team-role">VP of Product</div>
@@ -1422,31 +1422,67 @@
             document.getElementById('submitBtn').textContent = 'Send to webmaster@razzormail.com';
         }
         
-        // Form submission
+        // Form submission - opens email client
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-                to: 'webmaster@razzormail.com'
-            };
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
             
-            // In a real implementation, this would send to a server
-            alert(`Message would be sent to webmaster@razzormail.com:\n\nFrom: ${formData.name} (${formData.email})\nSubject: ${formData.subject}\n\n${formData.message}`);
+            // Create mailto link
+            const mailtoLink = `mailto:webmaster@razzormail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
             
-            // Reset form
-            this.reset();
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Reset form and CAPTCHA after a short delay
+            setTimeout(() => {
+                resetFormAndCaptcha();
+            }, 500);
+        });
+        
+        // Reset form and CAPTCHA function
+        function resetFormAndCaptcha() {
+            // Reset form fields
+            document.getElementById('contactForm').reset();
+            
+            // Reset submit button
             document.getElementById('submitBtn').disabled = true;
             document.getElementById('submitBtn').textContent = 'Send Message';
+            
+            // Hide success message
             document.getElementById('captchaSuccess').classList.add('hidden');
+            
+            // Reset all feedback messages
+            document.querySelectorAll('.captcha-feedback').forEach(el => {
+                el.classList.remove('show');
+                el.textContent = '';
+            });
+            
+            // Clear math input
+            document.getElementById('mathAnswer').value = '';
+            
+            // Clear color display and buttons
+            document.getElementById('colorDisplay').innerHTML = '';
+            document.getElementById('colorButtons').innerHTML = '';
+            
+            // Reset to level 1
             currentLevel = 1;
-            document.getElementById('level1').classList.add('active');
-            document.querySelectorAll('.captcha-level:not(#level1)').forEach(el => el.classList.remove('active'));
+            
+            // Hide all levels except level 1
+            document.querySelectorAll('.captcha-level').forEach((el, index) => {
+                if (index === 0) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+            
+            // Reinitialize pattern level
             initPatternLevel();
-        });
+        }
     </script>
 </body>
 </html>
