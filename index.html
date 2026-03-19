@@ -508,6 +508,70 @@
             line-height: 1.7;
         }
         
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(147, 51, 234, 0.4);
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: transparent;
+            border: none;
+            color: #e5e7eb;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: #a78bfa;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        .faq-answer p {
+            color: #9ca3af;
+            line-height: 1.7;
+        }
+        
         /* Testimonials Section */
         .testimonials-grid {
             display: grid;
@@ -1368,6 +1432,64 @@
         </div>
     </section>
     
+    <!-- FAQ Section -->
+    <section id="faq">
+        <h2 class="section-title reveal">Frequently Asked Questions</h2>
+        <p class="section-subtitle reveal">Everything you need to know about Razzormail.</p>
+        
+        <div class="faq-container">
+            <div class="faq-item reveal">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>How is Razzormail different from Gmail or Outlook?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Unlike traditional email providers, Razzormail uses end-to-end encryption and zero-knowledge architecture. This means we cannot read your emails, scan them for advertising data, or hand them over to third parties. Your data is encrypted on your device and only you hold the keys.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item reveal">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Can I use my own domain with Razzormail?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! Both our Pro and Enterprise plans support custom domains. You can use your existing domain or purchase a new one through our platform. Setup is simple and our support team can guide you through the DNS configuration.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item reveal">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Is Razzormail open source?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Our encryption protocols and client applications are fully open source and available on GitHub. We believe in transparency and welcome security audits from the community. Our server infrastructure is proprietary for security reasons.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item reveal">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>What happens if I forget my password?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Due to our zero-knowledge architecture, we cannot reset your password. However, we provide a recovery key during signup that you should store securely. Without this key, your data cannot be recovered - this is the trade-off for true privacy.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item reveal">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Do you have mobile apps?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, we have native apps for iOS and Android available on the App Store and Google Play. Our mobile apps offer the same end-to-end encryption as our web platform, plus biometric authentication for added security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title reveal">Get in Touch</h2>
@@ -1819,6 +1941,22 @@
                 resetFormAndCaptcha();
             }, 500);
         });
+        
+        // FAQ Toggle Function
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
         
         // Reset form and CAPTCHA function
         function resetFormAndCaptcha() {
