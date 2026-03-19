@@ -344,6 +344,118 @@
             margin-top: 0.5rem;
         }
         
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(147, 51, 234, 0.5);
+            box-shadow: 0 30px 60px -15px rgba(147, 51, 234, 0.3);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(147, 51, 234, 0.1);
+            border: 2px solid #9333ea;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.75rem;
+            color: #e5e7eb;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #9ca3af;
+            -webkit-text-fill-color: #9ca3af;
+        }
+        
+        .pricing-header p {
+            color: #9ca3af;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: #d1d5db;
+            border-bottom: 1px solid rgba(147, 51, 234, 0.1);
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.5);
+        }
+        
         /* Work Section */
         .work-grid {
             display: grid;
@@ -974,6 +1086,66 @@
             <div class="stat">
                 <div class="stat-number">0</div>
                 <div class="stat-label">Data Breaches</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <h2 class="section-title reveal">Simple Pricing</h2>
+        <p class="section-subtitle reveal">Choose the plan that fits your needs. All plans include end-to-end encryption and zero-knowledge architecture.</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card reveal">
+                <div class="pricing-header">
+                    <h3>Personal</h3>
+                    <div class="price">Free</div>
+                    <p>For individuals who value privacy</p>
+                </div>
+                <ul class="pricing-features">
+                    <li>✓ 1 GB storage</li>
+                    <li>✓ End-to-end encryption</li>
+                    <li>✓ Anonymous sign-up</li>
+                    <li>✓ Web access</li>
+                    <li>✓ Basic support</li>
+                </ul>
+                <a href="#contact" class="pricing-btn">Get Started</a>
+            </div>
+            
+            <div class="pricing-card featured reveal">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Pro</h3>
+                    <div class="price">$9<span>/month</span></div>
+                    <p>For power users and professionals</p>
+                </div>
+                <ul class="pricing-features">
+                    <li>✓ 50 GB storage</li>
+                    <li>✓ End-to-end encryption</li>
+                    <li>✓ Custom domain</li>
+                    <li>✓ Mobile apps</li>
+                    <li>✓ Priority support</li>
+                    <li>✓ Advanced filters</li>
+                </ul>
+                <a href="#contact" class="pricing-btn">Get Started</a>
+            </div>
+            
+            <div class="pricing-card reveal">
+                <div class="pricing-header">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <p>For organizations of any size</p>
+                </div>
+                <ul class="pricing-features">
+                    <li>✓ Unlimited storage</li>
+                    <li>✓ Dedicated servers</li>
+                    <li>✓ Custom domains</li>
+                    <li>✓ Admin controls</li>
+                    <li>✓ 24/7 phone support</li>
+                    <li>✓ SLA guarantee</li>
+                    <li>✓ On-premise option</li>
+                </ul>
+                <a href="#contact" class="pricing-btn">Contact Sales</a>
             </div>
         </div>
     </section>
