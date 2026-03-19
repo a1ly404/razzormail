@@ -1169,6 +1169,71 @@
             color: #6b7280;
         }
         
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 6rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid rgba(147, 51, 234, 0.4);
+            border-radius: 50%;
+            color: #f9fafb;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(147, 51, 234, 0.4);
+            transform: scale(1.1);
+        }
+        
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: #0a0a0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(147, 51, 234, 0.2);
+            border-top-color: #9333ea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loader-content p {
+            color: #a78bfa;
+            font-size: 1.1rem;
+        }
+        
         /* Reveal Animation */
         .reveal {
             opacity: 0;
@@ -1685,10 +1750,28 @@
         <p>&copy; <span id="currentYear">2024</span> razzormail. All rights reserved. | Built with privacy in mind.</p>
     </footer>
     
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+        
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+        
+        <!-- Page Loader -->
+        <div class="page-loader" id="pageLoader">
+            <div class="loader-content">
+                <div class="loader-spinner"></div>
+                <p>Loading Razzormail...</p>
+            </div>
+        </div>
     
     <script>
+        // Page Loader - Hide after page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('pageLoader').classList.add('hidden');
+            }, 1000);
+        });
+        
         // Auto-update copyright year
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
