@@ -1105,6 +1105,57 @@
             transform: translateY(-3px);
         }
         
+        /* Newsletter Section */
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .newsletter-form form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 0.75rem;
+            color: #f9fafb;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: #9333ea;
+            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+        }
+        
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.5);
+        }
+        
+        .newsletter-note {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
         /* Footer */
         .footer {
             padding: 3rem 2rem;
@@ -1604,6 +1655,20 @@
                     <button type="submit" class="submit-btn" id="submitBtn" disabled>Send Message</button>
                 </form>
             </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section id="newsletter">
+        <h2 class="section-title reveal">Stay Updated</h2>
+        <p class="section-subtitle reveal">Subscribe to our newsletter for the latest security news and product updates.</p>
+        
+        <div class="newsletter-form reveal">
+            <form onsubmit="event.preventDefault(); alert('Thanks for subscribing! Check your email for confirmation.');">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-note">No spam, ever. Unsubscribe anytime.</p>
         </div>
     </section>
     
