@@ -508,6 +508,65 @@
             line-height: 1.7;
         }
         
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(147, 51, 234, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(147, 51, 234, 0.2);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-content p {
+            color: #d1d5db;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #9333ea;
+        }
+        
+        .testimonial-author h4 {
+            color: #e5e7eb;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .testimonial-author p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        
         /* About Section */
         .team-grid {
             display: grid;
@@ -1213,6 +1272,53 @@
                 <div class="work-content">
                     <h3>Open Source Promise</h3>
                     <p>Trust through transparency. Our encryption protocols are open source and have been audited by independent security researchers. We believe you shouldn't have to trust us blindly - our code speaks for itself. Community contributions help us stay ahead of emerging threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title reveal">What People Say</h2>
+        <p class="section-subtitle reveal">Trusted by journalists, activists, and privacy-conscious individuals worldwide.</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-content">
+                    <p>"Razzormail has been a game-changer for my work as an investigative journalist. Knowing my sources are protected gives me peace of mind I never had with other email providers."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Chen">
+                    <div>
+                        <h4>Sarah Chen</h4>
+                        <p>Investigative Journalist</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <div class="testimonial-content">
+                    <p>"As a human rights lawyer, I need to communicate with clients in sensitive situations. Razzormail's zero-knowledge architecture means even they can't read my emails. That's the gold standard."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Marcus Johnson">
+                    <div>
+                        <h4>Marcus Johnson</h4>
+                        <p>Human Rights Lawyer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <div class="testimonial-content">
+                    <p>"We switched our entire organization to Razzormail after a security audit. The enterprise features are exactly what we needed, and the support team is incredibly responsive."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena Rodriguez">
+                    <div>
+                        <h4>Elena Rodriguez</h4>
+                        <p>CTO, SecureTech Inc.</p>
+                    </div>
                 </div>
             </div>
         </div>
