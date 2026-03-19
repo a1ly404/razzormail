@@ -548,6 +548,260 @@
             box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.5);
         }
         
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* CAPTCHA Styles */
+        .captcha-container {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(147, 51, 234, 0.4);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .captcha-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+        }
+        
+        .captcha-header h4 {
+            color: #a78bfa;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .captcha-header p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        
+        .captcha-level {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .captcha-level.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .level-indicator {
+            display: inline-block;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .captcha-instruction {
+            color: #e5e7eb;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .captcha-hint {
+            color: #6b7280;
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .pattern-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .pattern-btn {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            background: rgba(147, 51, 234, 0.1);
+            border: 2px solid rgba(147, 51, 234, 0.3);
+            border-radius: 12px;
+            color: #f9fafb;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pattern-btn:hover {
+            background: rgba(147, 51, 234, 0.3);
+            border-color: #9333ea;
+            transform: scale(1.1);
+        }
+        
+        .captcha-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(147, 51, 234, 0.3);
+            border-radius: 0.75rem;
+            color: #f9fafb;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .captcha-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #9333ea, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .captcha-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.5);
+        }
+        
+        .captcha-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .captcha-feedback.show {
+            display: block;
+        }
+        
+        .captcha-feedback.success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .captcha-feedback.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .color-display {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            min-height: 50px;
+        }
+        
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: flash 0.5s ease;
+        }
+        
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .color-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .color-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .color-btn:hover {
+            transform: scale(1.1);
+            border-color: white;
+        }
+        
+        .logic-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .logic-btn {
+            padding: 1rem;
+            background: rgba(147, 51, 234, 0.1);
+            border: 2px solid rgba(147, 51, 234, 0.3);
+            border-radius: 0.75rem;
+            color: #f9fafb;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .logic-btn:hover {
+            background: rgba(147, 51, 234, 0.3);
+            border-color: #9333ea;
+        }
+        
+        .captcha-success {
+            text-align: center;
+            padding: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .captcha-success.hidden {
+            display: none;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1rem;
+            animation: scaleIn 0.5s ease;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .captcha-success h4 {
+            color: #4ade80;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .captcha-success p {
+            color: #9ca3af;
+        }
+        
         /* Footer */
         .footer {
             padding: 3rem 2rem;
@@ -812,7 +1066,7 @@
             </div>
             
             <div class="contact-form">
-                <form onsubmit="event.preventDefault(); alert('Thanks for your message! We will get back to you soon.');">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" placeholder="John Doe" required>
@@ -829,7 +1083,58 @@
                         <label for="message">Your Message</label>
                         <textarea id="message" name="message" placeholder="Tell us about your needs..." required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    
+                    <!-- Multi-Level CAPTCHA -->
+                    <div id="captchaContainer" class="captcha-container">
+                        <div class="captcha-header">
+                            <h4>🔒 Security Verification Required</h4>
+                            <p>Complete all 4 levels to prove you're human</p>
+                        </div>
+                        
+                        <!-- Level 1: Pattern Recognition -->
+                        <div id="level1" class="captcha-level active">
+                            <div class="level-indicator">Level 1 of 4</div>
+                            <p class="captcha-instruction">Complete the pattern: <span id="patternQuestion"></span></p>
+                            <div class="pattern-options" id="patternOptions"></div>
+                            <div class="captcha-feedback" id="feedback1"></div>
+                        </div>
+                        
+                        <!-- Level 2: Math Challenge -->
+                        <div id="level2" class="captcha-level">
+                            <div class="level-indicator">Level 2 of 4</div>
+                            <p class="captcha-instruction">Solve: <span id="mathQuestion"></span></p>
+                            <p class="captcha-hint">Hint: Follow order of operations (PEMDAS)</p>
+                            <input type="number" id="mathAnswer" class="captcha-input" placeholder="Your answer">
+                            <button type="button" class="captcha-btn" onclick="checkMath()">Submit</button>
+                            <div class="captcha-feedback" id="feedback2"></div>
+                        </div>
+                        
+                        <!-- Level 3: Color Sequence -->
+                        <div id="level3" class="captcha-level">
+                            <div class="level-indicator">Level 3 of 4</div>
+                            <p class="captcha-instruction">Memorize the color sequence, then repeat it:</p>
+                            <div id="colorDisplay" class="color-display"></div>
+                            <div id="colorButtons" class="color-buttons"></div>
+                            <div class="captcha-feedback" id="feedback3"></div>
+                        </div>
+                        
+                        <!-- Level 4: Logic Puzzle -->
+                        <div id="level4" class="captcha-level">
+                            <div class="level-indicator">Level 4 of 4</div>
+                            <p class="captcha-instruction" id="logicQuestion"></p>
+                            <div id="logicOptions" class="logic-options"></div>
+                            <div class="captcha-feedback" id="feedback4"></div>
+                        </div>
+                        
+                        <!-- Success Message -->
+                        <div id="captchaSuccess" class="captcha-success hidden">
+                            <div class="success-icon">✓</div>
+                            <h4>All Levels Complete!</h4>
+                            <p>You've proven you're human. Click below to send your message.</p>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn" disabled>Send Message</button>
                 </form>
             </div>
         </div>
@@ -872,6 +1177,278 @@
                     });
                 }
             });
+        });
+        
+        // Multi-Level CAPTCHA System
+        let currentLevel = 1;
+        let colorSequence = [];
+        let playerSequence = [];
+        
+        // Initialize CAPTCHA when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initPatternLevel();
+        });
+        
+        // Level 1: Pattern Recognition
+        function initPatternLevel() {
+            const patterns = [
+                { q: '2, 4, 6, 8, ?', a: '10', options: ['9', '10', '12', '14'] },
+                { q: '1, 1, 2, 3, 5, ?', a: '8', options: ['7', '8', '9', '13'] },
+                { q: '3, 6, 12, 24, ?', a: '48', options: ['36', '42', '48', '52'] },
+                { q: '1, 4, 9, 16, ?', a: '25', options: ['20', '23', '25', '28'] },
+                { q: '2, 6, 12, 20, ?', a: '30', options: ['24', '28', '30', '32'] }
+            ];
+            
+            const pattern = patterns[Math.floor(Math.random() * patterns.length)];
+            document.getElementById('patternQuestion').textContent = pattern.q;
+            
+            const optionsContainer = document.getElementById('patternOptions');
+            optionsContainer.innerHTML = '';
+            
+            pattern.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'pattern-btn';
+                btn.textContent = opt;
+                btn.onclick = () => checkPattern(opt, pattern.a);
+                optionsContainer.appendChild(btn);
+            });
+        }
+        
+        function checkPattern(selected, correct) {
+            const feedback = document.getElementById('feedback1');
+            feedback.classList.add('show');
+            
+            if (selected === correct) {
+                feedback.textContent = '✓ Correct! Moving to Level 2...';
+                feedback.className = 'captcha-feedback show success';
+                setTimeout(() => nextLevel(), 1500);
+            } else {
+                feedback.textContent = '✗ Incorrect. Try again!';
+                feedback.className = 'captcha-feedback show error';
+                setTimeout(() => feedback.classList.remove('show'), 2000);
+            }
+        }
+        
+        // Level 2: Math Challenge
+        function initMathLevel() {
+            const ops = [
+                { q: '(17 × 3) + (24 ÷ 6)', a: 55 },
+                { q: '100 - (7 × 8) + 15', a: 59 },
+                { q: '(45 + 23) × 2 - 36', a: 100 },
+                { q: '256 ÷ 8 + 17 × 3', a: 83 },
+                { q: '(89 - 34) ÷ 5 × 7', a: 77 }
+            ];
+            
+            const math = ops[Math.floor(Math.random() * ops.length)];
+            document.getElementById('mathQuestion').textContent = math.q;
+            window.currentMathAnswer = math.a;
+        }
+        
+        function checkMath() {
+            const answer = parseInt(document.getElementById('mathAnswer').value);
+            const feedback = document.getElementById('feedback2');
+            feedback.classList.add('show');
+            
+            if (answer === window.currentMathAnswer) {
+                feedback.textContent = '✓ Correct! Moving to Level 3...';
+                feedback.className = 'captcha-feedback show success';
+                setTimeout(() => nextLevel(), 1500);
+            } else {
+                feedback.textContent = '✗ Incorrect. Remember PEMDAS!';
+                feedback.className = 'captcha-feedback show error';
+                document.getElementById('mathAnswer').value = '';
+            }
+        }
+        
+        // Level 3: Color Sequence Memory
+        function initColorLevel() {
+            const colors = ['#ef4444', '#22c55e', '#3b82f6', '#eab308', '#a855f7', '#ec4899'];
+            colorSequence = [];
+            playerSequence = [];
+            
+            // Generate 5-color sequence
+            for (let i = 0; i < 5; i++) {
+                colorSequence.push(colors[Math.floor(Math.random() * colors.length)]);
+            }
+            
+            // Create color buttons
+            const btnContainer = document.getElementById('colorButtons');
+            btnContainer.innerHTML = '';
+            
+            colors.forEach(color => {
+                const btn = document.createElement('button');
+                btn.className = 'color-btn';
+                btn.style.backgroundColor = color;
+                btn.onclick = () => handleColorClick(color);
+                btnContainer.appendChild(btn);
+            });
+            
+            // Show sequence
+            showColorSequence();
+        }
+        
+        function showColorSequence() {
+            const display = document.getElementById('colorDisplay');
+            display.innerHTML = '<p style="color: #9ca3af;">Watch the sequence...</p>';
+            
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i >= colorSequence.length) {
+                    clearInterval(interval);
+                    display.innerHTML = '<p style="color: #a78bfa; font-weight: 600;">Now repeat the sequence!</p>';
+                    return;
+                }
+                
+                display.innerHTML = '';
+                const box = document.createElement('div');
+                box.className = 'color-box';
+                box.style.backgroundColor = colorSequence[i];
+                display.appendChild(box);
+                
+                i++;
+            }, 800);
+        }
+        
+        function handleColorClick(color) {
+            playerSequence.push(color);
+            
+            const display = document.getElementById('colorDisplay');
+            display.innerHTML = '';
+            playerSequence.forEach(c => {
+                const box = document.createElement('div');
+                box.className = 'color-box';
+                box.style.backgroundColor = c;
+                display.appendChild(box);
+            });
+            
+            // Check if complete
+            if (playerSequence.length === colorSequence.length) {
+                checkColorSequence();
+            }
+        }
+        
+        function checkColorSequence() {
+            const feedback = document.getElementById('feedback3');
+            feedback.classList.add('show');
+            
+            const correct = colorSequence.every((color, i) => color === playerSequence[i]);
+            
+            if (correct) {
+                feedback.textContent = '✓ Perfect memory! Moving to Level 4...';
+                feedback.className = 'captcha-feedback show success';
+                setTimeout(() => nextLevel(), 1500);
+            } else {
+                feedback.textContent = '✗ Sequence incorrect. Try again!';
+                feedback.className = 'captcha-feedback show error';
+                setTimeout(() => {
+                    playerSequence = [];
+                    document.getElementById('colorDisplay').innerHTML = '';
+                    showColorSequence();
+                }, 2000);
+            }
+        }
+        
+        // Level 4: Logic Puzzle
+        function initLogicLevel() {
+            const puzzles = [
+                { 
+                    q: 'If all Bloops are Bleeps, and some Bleeps are Blops, then:',
+                    a: 'Some Bloops might be Blops',
+                    options: ['All Bloops are Blops', 'Some Bloops might be Blops', 'No Bloops are Blops', 'All Blops are Bloops']
+                },
+                { 
+                    q: 'A farmer has 17 sheep and all but 9 die. How many are left?',
+                    a: '9',
+                    options: ['8', '9', '17', '0']
+                },
+                { 
+                    q: 'If it takes 5 machines 5 minutes to make 5 widgets, how long for 100 machines to make 100 widgets?',
+                    a: '5 minutes',
+                    options: ['5 minutes', '100 minutes', '20 minutes', '1 minute']
+                },
+                { 
+                    q: 'In a lake, there is a patch of lily pads. Every day, the patch doubles in size. If it takes 48 days to cover the lake, how long to cover half?',
+                    a: '47 days',
+                    options: ['24 days', '47 days', '48 days', '46 days']
+                }
+            ];
+            
+            const puzzle = puzzles[Math.floor(Math.random() * puzzles.length)];
+            document.getElementById('logicQuestion').textContent = puzzle.q;
+            
+            const optionsContainer = document.getElementById('logicOptions');
+            optionsContainer.innerHTML = '';
+            
+            puzzle.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'logic-btn';
+                btn.textContent = opt;
+                btn.onclick = () => checkLogic(opt, puzzle.a);
+                optionsContainer.appendChild(btn);
+            });
+        }
+        
+        function checkLogic(selected, correct) {
+            const feedback = document.getElementById('feedback4');
+            feedback.classList.add('show');
+            
+            if (selected === correct) {
+                feedback.textContent = '✓ Correct! All levels complete!';
+                feedback.className = 'captcha-feedback show success';
+                setTimeout(() => captchaSuccess(), 1500);
+            } else {
+                feedback.textContent = '✗ Incorrect. Think it through!';
+                feedback.className = 'captcha-feedback show error';
+            }
+        }
+        
+        function nextLevel() {
+            document.getElementById(`level${currentLevel}`).classList.remove('active');
+            currentLevel++;
+            
+            if (currentLevel === 2) {
+                document.getElementById('level2').classList.add('active');
+                initMathLevel();
+            } else if (currentLevel === 3) {
+                document.getElementById('level3').classList.add('active');
+                initColorLevel();
+            } else if (currentLevel === 4) {
+                document.getElementById('level4').classList.add('active');
+                initLogicLevel();
+            }
+        }
+        
+        function captchaSuccess() {
+            document.getElementById('level4').classList.remove('active');
+            document.getElementById('captchaSuccess').classList.remove('hidden');
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').textContent = 'Send to webmaster@razzormail.com';
+        }
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                to: 'webmaster@razzormail.com'
+            };
+            
+            // In a real implementation, this would send to a server
+            alert(`Message would be sent to webmaster@razzormail.com:\n\nFrom: ${formData.name} (${formData.email})\nSubject: ${formData.subject}\n\n${formData.message}`);
+            
+            // Reset form
+            this.reset();
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').textContent = 'Send Message';
+            document.getElementById('captchaSuccess').classList.add('hidden');
+            currentLevel = 1;
+            document.getElementById('level1').classList.add('active');
+            document.querySelectorAll('.captcha-level:not(#level1)').forEach(el => el.classList.remove('active'));
+            initPatternLevel();
         });
     </script>
 </body>
