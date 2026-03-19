@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Razzormail</title>
+    <title>Razzormail - Secure Email for Everyone</title>
     <style>
         * {
             margin: 0;
@@ -11,93 +11,155 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #0f0f23;
+            background: #0a0a0f;
             color: #f9fafb;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated gradient orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: float 25s infinite ease-in-out;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .orb-1 {
+            width: 800px;
+            height: 800px;
+            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #4f46e5 100%);
+            top: -300px;
+            left: -200px;
+        }
+        
+        .orb-2 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
+            bottom: -200px;
+            right: -100px;
+            animation-delay: -8s;
+        }
+        
+        .orb-3 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            top: 50%;
+            left: 30%;
+            animation-delay: -16s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(60px, -60px) scale(1.1); }
+            50% { transform: translate(-40px, 40px) scale(0.95); }
+            75% { transform: translate(40px, 60px) scale(1.05); }
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #a78bfa;
+            background: rgba(147, 51, 234, 0.1);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #9333ea, #ec4899);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-        
-        /* Animated gradient orbs */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 20s infinite ease-in-out;
-            z-index: 0;
-        }
-        
-        .orb-1 {
-            width: 600px;
-            height: 600px;
-            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 50%, #4f46e5 100%);
-            top: -200px;
-            left: -200px;
-            animation-delay: 0s;
-        }
-        
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #ec4899 0%, #9333ea 100%);
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -7s;
-        }
-        
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -14s;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(50px, -50px) scale(1.1);
-            }
-            50% {
-                transform: translate(-30px, 30px) scale(0.95);
-            }
-            75% {
-                transform: translate(30px, 50px) scale(1.05);
-            }
-        }
-        
-        .container {
             text-align: center;
-            max-width: 900px;
-            width: 100%;
+            padding: 8rem 2rem 4rem;
             position: relative;
             z-index: 1;
         }
         
-        h1 {
-            font-size: 5rem;
+        .hero h1 {
+            font-size: 5.5rem;
             font-weight: 900;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #3b82f6 100%);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #9333ea 0%, #ec4899 30%, #3b82f6 60%, #06b6d4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.03em;
-            animation: shimmer 3s infinite linear;
-            background-size: 200% auto;
+            animation: shimmer 4s infinite linear;
+            background-size: 300% auto;
         }
         
         @keyframes shimmer {
@@ -106,258 +168,677 @@
             100% { background-position: 0% 50%; }
         }
         
-        .tagline {
-            font-size: 1.75rem;
+        .hero-tagline {
+            font-size: 1.5rem;
             color: #a78bfa;
             margin-bottom: 0.5rem;
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
         }
         
-        .subtitle {
+        .hero-subtitle {
             font-size: 1.25rem;
             color: #9ca3af;
             margin-bottom: 3rem;
-            font-weight: 400;
+            max-width: 600px;
         }
         
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(147, 51, 234, 0.2);
-            border-radius: 1.5rem;
-            padding: 3rem;
-            margin-bottom: 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px -10px rgba(147, 51, 234, 0.5);
             position: relative;
             overflow: hidden;
         }
         
-        .card::before {
+        .cta-button::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(147, 51, 234, 0.1),
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.5s;
         }
         
-        .card:hover::before {
+        .cta-button:hover::before {
             left: 100%;
         }
         
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(147, 51, 234, 0.5);
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.5),
-                0 0 40px rgba(147, 51, 234, 0.2);
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px -10px rgba(147, 51, 234, 0.6);
         }
         
-        .navigation {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-        
-        .nav-link {
-            padding: 0.875rem 2rem;
-            border-radius: 9999px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
-            color: #e5e7eb;
-            background: rgba(147, 51, 234, 0.1);
-            border: 1px solid rgba(147, 51, 234, 0.3);
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
             position: relative;
-            overflow: hidden;
+            z-index: 1;
         }
         
-        .nav-link::before {
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f9fafb 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 1.25rem;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Intro Section */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .intro-image {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .intro-image::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            transition: width 0.4s, height 0.4s;
-            border-radius: 50%;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), transparent);
+            pointer-events: none;
         }
         
-        .nav-link:hover::before {
-            width: 200%;
-            height: 200%;
+        .intro-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #e5e7eb;
         }
         
-        .nav-link:hover {
-            background: rgba(147, 51, 234, 0.3);
-            border-color: rgba(147, 51, 234, 0.8);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.4);
+        .intro-content p {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
         
-        .features {
+        .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
-        .feature {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(147, 51, 234, 0.15);
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(147, 51, 234, 0.1);
+            border: 1px solid rgba(147, 51, 234, 0.2);
             border-radius: 1rem;
-            padding: 1.5rem;
             transition: all 0.3s ease;
         }
         
-        .feature:hover {
-            background: rgba(147, 51, 234, 0.1);
-            border-color: rgba(147, 51, 234, 0.4);
+        .stat:hover {
             transform: translateY(-5px);
+            background: rgba(147, 51, 234, 0.15);
+            border-color: rgba(147, 51, 234, 0.4);
         }
         
-        .feature-icon {
+        .stat-number {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
+            font-weight: 800;
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .feature h3 {
-            color: #d1d5db;
-            font-size: 1.1rem;
+        .stat-label {
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+        
+        /* Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .work-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(147, 51, 234, 0.5);
+            box-shadow: 0 30px 60px -15px rgba(147, 51, 234, 0.3);
+        }
+        
+        .work-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .work-card:hover .work-image img {
+            transform: scale(1.1);
+        }
+        
+        .work-content {
+            padding: 2rem;
+        }
+        
+        .work-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e5e7eb;
+        }
+        
+        .work-content p {
+            color: #9ca3af;
+            line-height: 1.7;
+        }
+        
+        /* About Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            position: relative;
+        }
+        
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 4px solid transparent;
+            background: linear-gradient(135deg, #9333ea, #ec4899) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            position: relative;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover .team-photo img {
+            transform: scale(1.1);
+        }
+        
+        .team-member h3 {
+            font-size: 1.5rem;
+            color: #e5e7eb;
             margin-bottom: 0.5rem;
         }
         
-        .feature p {
+        .team-role {
+            color: #9333ea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-bio {
             color: #9ca3af;
             font-size: 0.95rem;
+            line-height: 1.7;
+            padding: 0 1rem;
         }
         
-        .glow-text {
-            color: #a78bfa;
-            text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
         
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #e5e7eb;
+        }
+        
+        .contact-info p {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #d1d5db;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(147, 51, 234, 0.1);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #d1d5db;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 0.75rem;
+            color: #f9fafb;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #9333ea;
+            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(147, 51, 234, 0.5);
+        }
+        
+        /* Footer */
         .footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
+            padding: 3rem 2rem;
+            text-align: center;
             border-top: 1px solid rgba(75, 85, 99, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer p {
             color: #6b7280;
-            font-size: 0.9rem;
         }
         
-        .pulse {
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            .tagline {
-                font-size: 1.25rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .card {
-                padding: 2rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Scroll reveal animation */
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .intro-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Background Orbs -->
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
     
-    <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="logo">Razzormail</a>
+            <div class="nav-links">
+                <a href="#intro" class="nav-link">Intro</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
         <h1>Razzormail</h1>
-        <p class="tagline">A Firm Fit</p>
-        <p class="subtitle">For Your Needs</p>
+        <p class="hero-tagline">A Firm Fit</p>
+        <p class="hero-subtitle">Secure, private, and lightning-fast email for the modern world. Built for those who value their digital privacy.</p>
+        <a href="#contact" class="cta-button">Get Started Free</a>
+    </section>
+    
+    <!-- Intro Section -->
+    <section id="intro">
+        <h2 class="section-title reveal">Why Choose Razzormail?</h2>
+        <p class="section-subtitle reveal">Experience email the way it should be - secure, simple, and under your control.</p>
         
-        <nav class="navigation">
-            <a href="#intro" class="nav-link">Intro</a>
-            <a href="#work" class="nav-link">Work</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </nav>
-        
-        <div class="card reveal">
-            <h2 class="glow-text" style="font-size: 2rem; margin-bottom: 1.5rem;">
-                <span class="pulse">Coming Soon</span>
-            </h2>
-            <p style="color: #d1d5db; line-height: 1.8; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                We're building the next generation of email services with cutting-edge security, 
-                modern design, and uncompromising privacy. Stay tuned for updates.
-            </p>
-            
-            <div class="features">
-                <div class="feature">
-                    <span class="feature-icon">🔒</span>
-                    <h3>Secure</h3>
-                    <p>End-to-end encryption</p>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">⚡</span>
-                    <h3>Fast</h3>
-                    <p>Lightning quick delivery</p>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">🛡️</span>
-                    <h3>Private</h3>
-                    <p>Your data, your control</p>
-                </div>
+        <div class="intro-grid reveal">
+            <div class="intro-image">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80" alt="Team collaboration">
+            </div>
+            <div class="intro-content">
+                <h3>Built for Privacy</h3>
+                <p>In an age where data is the new currency, we believe your communications should remain yours alone. Razzormail was founded with a simple mission: to provide email services that respect your privacy without compromising on usability.</p>
+                <p>Unlike traditional email providers who scan your messages for advertising data, we employ zero-knowledge architecture. This means even we can't read your emails. Your data is encrypted from the moment it leaves your device until it reaches the intended recipient.</p>
+                <p>Whether you're a journalist protecting sources, a business safeguarding trade secrets, or simply someone who values personal privacy, Razzormail provides the security you need with the simplicity you want.</p>
             </div>
         </div>
         
-        <div class="footer">
-            <p>&copy; <span id="currentYear">2024</span> razzormail. All rights reserved.</p>
+        <div class="stats reveal">
+            <div class="stat">
+                <div class="stat-number">10M+</div>
+                <div class="stat-label">Emails Secured Daily</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime Guaranteed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Data Breaches</div>
+            </div>
         </div>
-    </div>
+    </section>
+    
+    <!-- Work Section -->
+    <section id="work">
+        <h2 class="section-title reveal">Our Services</h2>
+        <p class="section-subtitle reveal">Comprehensive email solutions designed for individuals and teams who refuse to compromise on security.</p>
+        
+        <div class="work-grid">
+            <div class="work-card reveal">
+                <div class="work-image">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&auto=format&fit=crop&q=80" alt="Personal Email Security">
+                </div>
+                <div class="work-content">
+                    <h3>Personal Protection</h3>
+                    <p>Your personal email should be exactly that - personal. Our individual plans offer military-grade encryption, anonymous sign-up options, and no data retention. Perfect for activists, journalists, and privacy-conscious individuals who need to communicate without leaving a digital footprint.</p>
+                </div>
+            </div>
+            
+            <div class="work-card reveal">
+                <div class="work-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&auto=format&fit=crop&q=80" alt="Team Collaboration">
+                </div>
+                <div class="work-content">
+                    <h3>Team Collaboration</h3>
+                    <p>Secure communication for modern teams. Share files, coordinate projects, and maintain client confidentiality with end-to-end encrypted group messaging. Admin controls let you manage permissions while keeping everything private. Includes shared calendars and secure file storage up to 100GB.</p>
+                </div>
+            </div>
+            
+            <div class="work-card reveal">
+                <div class="work-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80" alt="Enterprise Security">
+                </div>
+                <div class="work-content">
+                    <h3>Enterprise Solutions</h3>
+                    <p>Fortune 500 companies trust Razzormail for their most sensitive communications. Our enterprise tier includes dedicated servers, custom domain hosting, compliance reporting for GDPR and HIPAA, 24/7 priority support, and advanced threat protection powered by AI-driven spam filtering.</p>
+                </div>
+            </div>
+            
+            <div class="work-card reveal">
+                <div class="work-image">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&auto=format&fit=crop&q=80" alt="Mobile Security">
+                </div>
+                <div class="work-content">
+                    <h3>Mobile Freedom</h3>
+                    <p>Your secure inbox travels with you. Our iOS and Android apps offer biometric authentication, remote wipe capabilities, and offline access to encrypted messages. Stay connected securely whether you're in a coffee shop in Berlin or a conference room in Tokyo.</p>
+                </div>
+            </div>
+            
+            <div class="work-card reveal">
+                <div class="work-image">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&auto=format&fit=crop&q=80" alt="Data Center">
+                </div>
+                <div class="work-content">
+                    <h3>Swiss Infrastructure</h3>
+                    <p>Your data is protected by some of the world's strongest privacy laws. Our servers are located in Switzerland, outside the reach of invasive surveillance programs. Multiple redundant data centers ensure your emails are always accessible, even during outages.</p>
+                </div>
+            </div>
+            
+            <div class="work-card reveal">
+                <div class="work-image">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&auto=format&fit=crop&q=80" alt="Cryptography">
+                </div>
+                <div class="work-content">
+                    <h3>Open Source Promise</h3>
+                    <p>Trust through transparency. Our encryption protocols are open source and have been audited by independent security researchers. We believe you shouldn't have to trust us blindly - our code speaks for itself. Community contributions help us stay ahead of emerging threats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title reveal">Meet the Team</h2>
+        <p class="section-subtitle reveal">The passionate experts behind the world's most secure email platform.</p>
+        
+        <div class="team-grid">
+            <div class="team-member reveal">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80" alt="Alex Chen - CEO">
+                </div>
+                <h3>Alex Chen</h3>
+                <div class="team-role">Chief Executive Officer</div>
+                <p class="team-bio">Former NSA cryptographer turned privacy advocate. Alex founded Razzormail after witnessing firsthand how easily personal communications could be intercepted. He holds a PhD in Computer Science from MIT and leads our mission to democratize digital privacy.</p>
+            </div>
+            
+            <div class="team-member reveal">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80" alt="Sarah Williams - CTO">
+                </div>
+                <h3>Sarah Williams</h3>
+                <div class="team-role">Chief Technology Officer</div>
+                <p class="team-bio">Sarah built our zero-knowledge architecture from the ground up. With 15 years in cybersecurity and contributions to OpenSSL, she ensures Razzormail stays at the cutting edge of encryption technology. She speaks regularly at DEF CON and Black Hat conferences.</p>
+            </div>
+            
+            <div class="team-member reveal">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80" alt="Marcus Rodriguez - Head of Security">
+                </div>
+                <h3>Marcus Rodriguez</h3>
+                <div class="team-role">Head of Security</div>
+                <p class="team-bio">Marcus leads our red team operations, constantly probing our own defenses to find vulnerabilities before attackers do. Previously a security researcher at Google Project Zero, he has discovered critical vulnerabilities in major email protocols.</p>
+            </div>
+            
+            <div class="team-member reveal">
+                <div class="team-photo">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80" alt="Emma Thompson - VP Product">
+                </div>
+                <h3>Emma Thompson</h3>
+                <div class="team-role">VP of Product</div>
+                <p class="team-bio">Emma believes security shouldn't require a computer science degree. She designs intuitive interfaces that make advanced encryption accessible to everyone. Her user-first approach has earned Razzormail industry awards for usability.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title reveal">Get in Touch</h2>
+        <p class="section-subtitle reveal">Ready to take control of your digital privacy? We're here to help.</p>
+        
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <h3>Start Your Secure Journey</h3>
+                <p>Whether you have questions about our encryption, need help migrating from another provider, or want to discuss enterprise solutions, our team is ready to assist. We typically respond within 2 hours during business hours.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>Email Us</strong><br>
+                            hello@razzormail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div>
+                            <strong>Live Chat</strong><br>
+                            Available 24/7 in-app
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Headquarters</strong><br>
+                            Zurich, Switzerland
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🔐</div>
+                        <div>
+                            <strong>PGP Key</strong><br>
+                            Available on Keybase
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Thanks for your message! We will get back to you soon.');">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="How can we help?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your needs..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="currentYear">2024</span> razzormail. All rights reserved. | Built with privacy in mind.</p>
+    </footer>
     
     <script>
         // Auto-update copyright year
@@ -366,7 +847,7 @@
         // Scroll reveal animation
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
+            rootMargin: "0px 0px -100px 0px"
         };
         
         const observer = new IntersectionObserver((entries) => {
@@ -378,6 +859,20 @@
         }, observerOptions);
         
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
